@@ -7,6 +7,10 @@ module.exports.obj = function (tr) {
     return sink({ encoding: 'object' }, tr);
 };
 
+module.exports.str = function (tr) {
+    return sink({ encoding: 'string' }, tr);
+};
+
 function sink(opts, tr) {
     if (typeof opts === 'function') {
         tr = opts;

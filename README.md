@@ -16,7 +16,7 @@ var stream = sink(opts, trs);
 ### stream = sink.obj(transformFn)
 Same with `sink({ encoding: 'object' }, transformFn)`
 
-## Example
+## Examples
 
 **example/reverse.js**:
 
@@ -51,4 +51,31 @@ output:
 ,
 {"x":1}
 ]
+```
+
+**example/concat.js**:
+
+```javascript
+var sink = require('sink-transform');
+var fs = require('fs');
+
+fs.createReadStream(__dirname + '/files/a.js')
+    .pipe(sink.str(function (body, done) {
+        console.log(body);
+        done();
+    }));
+
+```
+
+a.js:
+
+```javascript
+console.log('a');
+```
+
+output:
+
+```
+⌘ node example/concat.js
+console.log('a');
 ```
