@@ -16,6 +16,9 @@ var stream = sink(opts, trs);
 ### stream = sink.obj(transformFn)
 Same with `sink({ encoding: 'object' }, transformFn)`
 
+### stream = sink.str(transformFn)
+Same with `sink({ encoding: 'string' }, transformFn)`
+
 ## Examples
 
 **example/reverse.js**:
