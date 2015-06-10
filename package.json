@@ -1,0 +1,33 @@
+{
+  "name": "sink-transform",
+  "version": "0.0.1",
+  "description": "Wrapper for concat-stream to make a transform",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zoubin/sink-transform.git"
+  },
+  "keywords": [
+    "concat-stream",
+    "transform",
+    "sink"
+  ],
+  "author": "zoubin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zoubin/sink-transform/issues"
+  },
+  "homepage": "https://github.com/zoubin/sink-transform#readme",
+  "dependencies": {
+    "concat-stream": "^1.4.8",
+    "readable-stream": "^2.0.0"
+  },
+  "devDependencies": {
+    "JSONStream": "^1.0.4",
+    "tape": "^4.0.0",
+    "through2": "^1.1.1"
+  }
+}
