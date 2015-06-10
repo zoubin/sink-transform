@@ -30,6 +30,9 @@ function sink(opts, tr) {
         next();
     };
     stream._flush = function (cb) {
+        if (!sink) {
+            return cb();
+        }
         done = cb;
         sink.end();
     };

@@ -3,6 +3,19 @@ var test = require('tape');
 var concat = require('concat-stream');
 var thr = require('through2');
 
+test('sink empty', function(t) {
+    t.plan(1);
+    var trs = sink(function (body, done) {
+        done();
+    });
+    trs.pipe(thr.obj(function (s, e, n) {
+        n();
+    }, function () {
+        t.equal(1, 1);
+    }));
+    trs.end();
+});
+
 test('sink buffer', function(t) {
     t.plan(1);
     var trs = sink(function (body, done) {
