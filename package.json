@@ -1,6 +1,6 @@
 {
   "name": "sink-transform",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Wrapper for concat-stream to make a transform",
   "main": "index.js",
   "scripts": {
