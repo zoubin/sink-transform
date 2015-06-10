@@ -1,3 +1,7 @@
+# 0.1.2
+
+* fix empty input case
+
 # 0.1.1
 
 * `.str` sugar method
