@@ -1,7 +1,9 @@
 var concat = require('concat-stream');
-var Transform = require('readable-stream').Transform;
+var Stream = require('readable-stream');
+var Transform = Stream.Transform;
 
 module.exports = sink;
+module.exports.Through = Stream.PassThrough;
 
 module.exports.obj = function (tr) {
     return sink({ encoding: 'object' }, tr);
