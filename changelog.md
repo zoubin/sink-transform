@@ -1,3 +1,9 @@
+# 1.0.0
+
+* Breaking change: `sink()` instead of `sink.PassThrough()`
+* Use `tap`
+* Use `eslint`
+
 # 0.1.2
 
 * fix empty input case
