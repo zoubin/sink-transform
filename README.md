@@ -1,45 +1,28 @@
 # sink-transform
-Wrapper for [concat-stream](https://www.npmjs.com/package/concat-stream) to make a transform
-
-## Usage
-
-```javascript
-var sink = require('sink-transform');
-var stream = sink(opts, trs);
-```
-
-### stream = sink(opts={}, transformFn)
-
-* **opts**: *Object* Will be directly passsed to [concat-stream](https://www.npmjs.com/package/concat-stream)
-* **transformFn** *Function* Receives the result of [concat-stream](https://www.npmjs.com/package/concat-stream), and a callback to mark the end of the transform operation.
-
-### stream = sink.obj(transformFn)
-Same with `sink({ encoding: 'object' }, transformFn)`
-
-### stream = sink.str(transformFn)
-Same with `sink({ encoding: 'string' }, transformFn)`
+A wrapper for [concat-stream] to make a transform to process the concated result.
 
 ## Examples
 
-**example/reverse.js**:
+### Concat objects
+example/reverse.js:
 
 ```javascript
-var sink = require('sink-transform');
-var JSONStream = require('JSONStream');
+var sink = require('sink-transform')
+var JSONStream = require('JSONStream')
 
 var stream = sink.obj(function (rows, done) {
-    for (var i = rows.length - 1; i >= 0; --i) {
-        this.push(rows[i]);
-    }
-    done();
-});
+  for (var i = rows.length - 1; i >= 0; --i) {
+    this.push(rows[i])
+  }
+  done()
+})
 
-stream.pipe(JSONStream.stringify()).pipe(process.stdout);
+stream.pipe(JSONStream.stringify()).pipe(process.stdout)
 
-stream.write({ x:1 });
-stream.write({ y:2 });
-stream.write({ z:3 });
-stream.end();
+stream.write({ x:1 })
+stream.write({ y:2 })
+stream.write({ z:3 })
+stream.end()
 
 ```
 
@@ -56,29 +39,63 @@ output:
 ]
 ```
 
-**example/concat.js**:
+### Concat strings
+
+example/concat.js:
 
 ```javascript
-var sink = require('sink-transform');
-var fs = require('fs');
+var sink = require('sink-transform')
+var fs = require('fs')
 
 fs.createReadStream(__dirname + '/files/a.js')
-    .pipe(sink.str(function (body, done) {
-        console.log(body);
-        done();
-    }));
+  .pipe(sink.str(function (body, done) {
+    console.log(body)
+    done()
+  }))
 
 ```
 
 a.js:
 
 ```javascript
-console.log('a');
+console.log('a')
 ```
 
 output:
 
 ```
 ⌘ node example/concat.js
-console.log('a');
+console.log('a')
 ```
+
+## Usage
+
+```javascript
+var sink = require('sink-transform')
+var stream = sink(opts, trs)
+```
+
+### stream = sink(opts={}, transformFn)
+
+**opts**
+
+Type: `Object`
+
+Directly passsed to [concat-stream] as the first argument.
+
+**transformFn**
+
+Type: `Function`
+
+Signature: `(concated, done) => {}`
+
+Receives the concated result of [concat-stream],
+and a callback to mark the end of the transform operation.
+
+### stream = sink.obj(transformFn)
+Same with `sink({ encoding: 'object' }, transformFn)`
+
+### stream = sink.str(transformFn)
+Same with `sink({ encoding: 'string' }, transformFn)`
+
+[concat-stream]: https://www.npmjs.com/package/concat-stream
