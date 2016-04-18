@@ -5,7 +5,6 @@ var thr = require('through2')
 test('obj', function(t) {
   t.plan(1)
   var trs = sink.obj()
-  var i = 0
   var expected = [
     { x: 1 },
     { x: 2 },
@@ -22,7 +21,6 @@ test('obj', function(t) {
 test('string', function(t) {
   t.plan(1)
   var trs = sink.str()
-  var i = 0
   trs.pipe(thr.obj(function (row, _, next) {
     t.same(row, 'ab')
     next()
@@ -35,7 +33,6 @@ test('string', function(t) {
 test('buffer', function(t) {
   t.plan(1)
   var trs = sink()
-  var i = 0
   trs.pipe(thr.obj(function (buf, _, next) {
     t.same(buf.toString(), 'ab')
     next()
