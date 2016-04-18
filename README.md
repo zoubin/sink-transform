@@ -1,4 +1,10 @@
 # sink-transform
+[![version](https://img.shields.io/npm/v/sink-transform.svg)](https://www.npmjs.org/package/sink-transform)
+[![status](https://travis-ci.org/zoubin/sink-transform.svg)](https://travis-ci.org/zoubin/sink-transform)
+[![coverage](https://img.shields.io/coveralls/zoubin/sink-transform.svg)](https://coveralls.io/github/zoubin/sink-transform)
+[![dependencies](https://david-dm.org/zoubin/sink-transform.svg)](https://david-dm.org/zoubin/sink-transform)
+[![devDependencies](https://david-dm.org/zoubin/sink-transform/dev-status.svg)](https://david-dm.org/zoubin/sink-transform#info=devDependencies)
+
 A wrapper for [concat-stream] to make a transform to process the concated result.
 
 ## Examples
